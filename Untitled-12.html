@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Dalia ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+background:linear-gradient(-45deg,#ff4d6d,#ff758f,#7b2cbf,#4361ee);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:40px;
+border-radius:25px;
+color:white;
+z-index:10;
+max-width:700px;
+box-shadow:0 0 40px rgba(0,0,0,.3);
+}
+
+h1{
+font-size:3.5rem;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.05);}
+}
+
+.date{
+font-size:1.5rem;
+margin-top:15px;
+}
+
+.message{
+margin-top:20px;
+font-size:1.2rem;
+line-height:1.8;
+}
+
+button{
+margin-top:25px;
+padding:15px 25px;
+font-size:18px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+
+.balloon{
+position:absolute;
+bottom:-100px;
+font-size:50px;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+to{
+transform:translateY(-120vh);
+}
+}
+
+.star{
+position:absolute;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+50%{opacity:.2;}
+}
+
+#surpriseBox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+color:white;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-size:2rem;
+z-index:9999;
+text-align:center;
+padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>🎂 Happy Birthday Dalia 🎂</h1>
+
+<div class="date">
+9 June
+</div>
+
+<div class="message">
+Wishing you happiness, joy, success and beautiful memories. ❤️✨
+</div>
+
+<button onclick="showSurprise()">
+🎁 Open Your Surprise
+</button>
+</div>
+
+<div id="surpriseBox">
+<h1>🎉 Surprise! 🎉</h1>
+<p>I know your birthday...</p>
+<h2>🎂 9 June 🎂</h2>
+<p>Happy Birthday Dalia ❤️</p>
+</div>
+
+<script>
+
+const colors=[
+"#ff0000","#00ff00","#ffff00",
+"#00ffff","#ff00ff","#ffffff",
+"#ff8800","#00aaff"
+];
+
+function createConfetti(amount=150){
+for(let i=0;i<amount;i++){
+let c=document.createElement("div");
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+c.style.top="-20px";
+
+c.style.width=(Math.random()*10+5)+"px";
+c.style.height=c.style.width;
+
+c.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+c.style.animationDuration=
+(Math.random()*4+3)+"s";
+
+document.body.appendChild(c);
+}
+}
+
+createConfetti();
+
+for(let i=0;i<20;i++){
+let b=document.createElement("div");
+b.className="balloon";
+b.innerHTML=["🎈","🎉","💖"][Math.floor(Math.random()*3)];
+b.style.left=Math.random()*100+"vw";
+b.style.animationDuration=(Math.random()*10+8)+"s";
+document.body.appendChild(b);
+}
+
+for(let i=0;i<60;i++){
+let s=document.createElement("div");
+s.className="star";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+s.style.fontSize=(Math.random()*15+10)+"px";
+document.body.appendChild(s);
+}
+
+function showSurprise(){
+document.getElementById("surpriseBox").style.display="flex";
+createConfetti(250);
+}
+</script>
+
+</body>
+</html>
